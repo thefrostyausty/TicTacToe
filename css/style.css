@@ -1,0 +1,46 @@
+body {
+    background-color: rgba(169, 220, 243, 0.897);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.gameBoard {
+    display: flex;
+    justify-self: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: black;
+    min-height: 600px;
+    min-width: 600px;
+}
+
+.row {
+    color: limegreen;
+    display: flex;
+    flex-direction: row;
+}
+#row1{
+    color: red;
+    
+}
+#row2 {
+    color: blueviolet;
+}
+#row3{
+    color: brown;
+}
+        
+div {
+    background-color: white;
+    border: 0.5px solid black;
+    min-height: 200px;
+    min-width: 200px;
+}
+
+#reset {
+    font-size: 15px;
+    margin: 5px;
+}
+

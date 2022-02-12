@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Tic-Tac-Toe</title>
+</head>
+
+<body>
+    <!-- this is what you should see when the page opens -->
+    <h1>TIC TAC TOE</h1>
+    <!-- here is where I establish the player, win, lose, tie messages -->
+    <!-- this should say 'player one, your turn' -->
+    <p id="messageP1"></p>
+    <!-- this should say 'player two, your turn' -->
+    <p id="messageP2"></p>
+    <!-- this should say Player 'X' has won, player 'O' lost and whether
+        they tied -->
+        <p id="results"></p>
+        <!-- here is where I can style the game board and pieces for the game
+            after looking at a tutorial I realize I should change from ID to class
+            in order to style all of these parts -->
+            <div class="gameBoard">
+                <div class="row" id="row1">
+            <div>1</div>
+            <div>2</div>
+            <div>3</div>
+        </div>
+        <div class="row" id="row2">
+            <div>4</div>
+            <div>5</div>
+            <div>6</div>
+        </div>
+        <div class="row" id="row3">
+            <div>7</div>
+            <div>8</div>
+            <div>9</div>
+        </div>
+    </div>
+    <!-- this what I want to reset when the game ends -->
+    <button id="reset">RESET</button>
+    <script src="js/app.js"></script>
+</body>
+
+</html>
