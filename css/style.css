@@ -20,10 +20,10 @@ body {
     color: limegreen;
     display: flex;
     flex-direction: row;
+    font-size: 150px;
 }
 #row1{
     color: red;
-    
 }
 #row2 {
     color: blueviolet;
@@ -37,6 +37,9 @@ div {
     border: 0.5px solid black;
     min-height: 200px;
     min-width: 200px;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
 }
 
 #reset {
