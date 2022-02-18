@@ -5,14 +5,23 @@
 
 
 // HERE I WANT THE VARIABLES OF WHAT WILL BE EVOKED IN FUNCTIONS?
-
+const box0 = document.getElementById('0')
+const box1 = document.getElementById('1')
+const box2 = document.getElementById('2')
+const box3 = document.getElementById('3')
+const box4 = document.getElementById('4')
+const box5 = document.getElementById('5')
+const box6 = document.getElementById('6')
+const box7 = document.getElementById('7')
+const box8 = document.getElementById('8')
 
 // I want to make a function that contains a condition that will display
 // a message after a 'click' to say "Player One or Two it's your turn"
 // now I will make a function to say when it is the players turn
 const playerMessage = document.querySelector('#playerMessage');
 let currentPlayer = 'X'
-
+let xMoves = []
+let oMoves = []
 
 const displayCurrentPlayer = () => {
     playerMessage.innerText = `It's ${currentPlayer}'s turn`
@@ -28,7 +37,7 @@ displayCurrentPlayer()
 const winnerMessage = document.querySelector('#winnerMessage')
 
 const displayWinner = (winner) => {
-    playerMessage.innerText = `Player ${winner} won!`
+    winnerMessage.innerText = `Player ${winner} won!`
 }
 
 
@@ -41,20 +50,38 @@ const takeTurn = (event) => {
 
     // 1. The current player's symbol should be filled in in that position IF that position isn't already taken.
     // the variable targetValue represents the element that was clicked on's value
+    
     let positionDiv = event.target
     let positionValue = positionDiv.innerText
-    let positionIsTaken = symbols.includes(positionValue)  // how to check if value is in an array
-    if (!positionIsTaken) {
+    let positionIsTaken = symbols.includes(positionValue)  // Googled: how to check if value is in an array and received assistance from friend/tutor
+    let gameOver = false;
+    
+    if (!positionIsTaken || !gameOver) {
         positionDiv.innerText = currentPlayer
-
+        console.log(positionDiv.id)
         // 2. A winner should be checked for AND declared if a winner exists
-        // I have an array of strings with the winning combinations
-        let winningCominations = [[0,1,2], [1,4,7], [2,5,8], [0,3,6], [2,4,6], [3,4,5], [6,7,8], [0,4,8]]
+        // I have an array with the winning combinations
+        // let winningCombinations = [[0, 1, 2], [1, 4, 7], [2, 5, 8], [0, 3, 6], [2, 4, 6], [3, 4, 5], [6, 7, 8], [0, 4, 8]]
+        // if (currentPlayer == 'X') {
+        // } 
+
+        if (box0.innerText == box1.innerText && box1.innerText == box2.innerText||
+             box1.innerText == box4.innerText && box1.innerText == box7.innerText 
+             ){
+                 displayWinner(currentPlayer)
+                 gameOver = true;
+                 console.log(gameOver)
+        }           
         
+        // console.log(box8.innerText)
+
+
 
         // 3. If there's no winner, the next player's turn should start
         currentPlayer = currentPlayer === 'X' ? 'O': 'X'
         displayCurrentPlayer()
+    } else{
+        console.log(gameOver)
     }
 }
 
