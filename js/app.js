@@ -56,7 +56,7 @@ const takeTurn = (event) => {
     let positionIsTaken = symbols.includes(positionValue)  // Googled: how to check if value is in an array and received assistance from friend/tutor
     let gameOver = false;
     
-    if (!positionIsTaken || !gameOver) {
+    if (!positionIsTaken && !gameOver) {
         positionDiv.innerText = currentPlayer
         console.log(positionDiv.id)
         // 2. A winner should be checked for AND declared if a winner exists
@@ -66,9 +66,15 @@ const takeTurn = (event) => {
         // } 
 
         if (box0.innerText == box1.innerText && box1.innerText == box2.innerText||
-             box1.innerText == box4.innerText && box1.innerText == box7.innerText 
-             ){
-                 displayWinner(currentPlayer)
+            box1.innerText == box4.innerText && box1.innerText == box7.innerText||
+            box2.innerText == box5.innerText && box2.innerText == box8.innerText||
+            box0.innerText == box3.innerText && box0.innerText == box6.innerText||
+            box2.innerText == box4.innerText && box2.innerText == box6.innerText||
+            box3.innerText == box4.innerText && box3.innerText == box5.innerText||
+            box6.innerText == box7.innerText && box6.innerText == box8.innerText||
+            box0.innerText == box4.innerText && box0.innerText == box2.innerText
+            ){
+                displayWinner(currentPlayer)
                  gameOver = true;
                  console.log(gameOver)
         }           
