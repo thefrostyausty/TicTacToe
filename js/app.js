@@ -83,27 +83,11 @@ const checkWinner = () => {
         if (box0.innerHTML === "X" || box0.innerHTML === "O"){
             displayWinner()}
     }
-    if (box0.innerHTML === box4.innerHTML && box4.innerHTML === box8.innerHTML &&
-        box6.innerText === box7.innerText && box7.innerText === box8.innerText &&
-        box2.innerText === box4.innerText && box4.innerText === box6.innerText &&
-        box3.innerText === box4.innerText && box4.innerText === box5.innerText &&
-        box0.innerText === box3.innerText && box3.innerText === box6.innerText &&
-        box2.innerText === box5.innerText && box5.innerText === box8.innerText &&
-        box1.innerText === box4.innerText && box4.innerText === box7.innerText &&
-        box0.innerHTML === box1.innerHTML && box1.innerHTML === box2.innerHTML){
-
-            if (box0.innerHTML === "X" || box0.innerHTML === "O" &&
-                box6.innerHTML === "X" || box6.innerHTML === "O" &&
-                box2.innerHTML === "X" || box2.innerHTML === "O" &&
-                box3.innerHTML === "X" || box3.innerHTML === "O" &&
-                box4.innerHTML === "X" || box4.innerHTML === "O" &&
-                box5.innerHTML === "X" || box5.innerHTML === "O" &&
-                box7.innerHTML === "X" || box7.innerHTML === "O" &&
-                box8.innerHTML === "X" || box8.innerHTML === "O" &&
-                box1.innerHTML === "X" || box1.innerHTML === "O"){
-                tieGame()}
+    if (box0.innerText !== "" && box1.innerText !== "" && box2.innerText !== "" &&
+        box3.innerText !== "" && box4.innerText !== "" && box5.innerText !== "" &&
+        box6.innerText !== "" && box7.innerText !== "" && box8.innerText !== ""){
+            tieGame()
         }
-        
 }
 // checkWinner()
 const takeTurn = (event) => {
