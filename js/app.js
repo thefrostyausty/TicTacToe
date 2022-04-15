@@ -21,8 +21,6 @@ const box8 = document.getElementById('8')
 const winnerMessage = document.querySelector('#winnerMessage')
 const playerMessage = document.querySelector('#playerMessage');
 
-let xMoves = []
-let oMoves = []
 let currentPlayer = 'X'
 
 const displayCurrentPlayer = () => {
@@ -30,80 +28,143 @@ const displayCurrentPlayer = () => {
 }
 displayCurrentPlayer()
 
+const tieGame = () => {
+    winnerMessage.innerText = "IT'S A TIE. RESET BOARD!"
+}
+
 // I want to show who won a match.
 // this is the constant that holds the id HTML element
 // here i utilized my vairable message which is connected to the ID end results to display when a winner has won
-const displayWinner = (winner) => {
-    winnerMessage.innerText = `Player ${winner} won!`
+const displayWinner = () => {
+    winnerMessage.innerText = `Player ${currentPlayer} won!`
 }
 // When a player clicks on a position on the Tic Tac Toe Board,
 const symbols = ['X', 'O']
 const boardPositions = document.querySelectorAll('.row div')
 
+const checkWinner = () => {
+    if (box0.innerHTML === box1.innerHTML && box1.innerHTML === box2.innerHTML ||
+        box2.innerHTML === box1.innerHTML && box1.innerHTML === box0.innerHTML){
+        if (box0.innerHTML === "X" || box0.innerHTML === "O"){
+            displayWinner()}
+    }
+    if (box1.innerText === box4.innerText && box4.innerText === box7.innerText ||
+        box7.innerText === box4.innerText && box4.innerText === box1.innerText){
+        if (box1.innerHTML === "X" || box1.innerHTML === "O"){
+            displayWinner()}
+    }
+    if (box2.innerText === box5.innerText && box5.innerText === box8.innerText ||
+        box8.innerText === box5.innerText && box5.innerText === box2.innerText){
+        if (box2.innerHTML === "X" || box2.innerHTML === "O"){
+            displayWinner()}
+    }
+    if (box0.innerText === box3.innerText && box3.innerText === box6.innerText ||
+        box6.innerText === box3.innerText && box3.innerText === box0.innerText ){
+        if (box0.innerHTML === "X" || box0.innerHTML === "O"){
+            displayWinner()}
+    }
+    if (box3.innerText === box4.innerText && box4.innerText === box5.innerText ||
+        box5.innerText === box4.innerText && box4.innerText === box3.innerText){
+        if (box3.innerHTML === "X" || box3.innerHTML === "O"){
+            displayWinner()}
+    }
+    if (box2.innerText === box4.innerText && box4.innerText === box6.innerText ||
+        box6.innerText === box4.innerText && box4.innerText === box2.innerText) {
+        if (box2.innerHTML === "X" || box2.innerHTML === "O"){
+            displayWinner()}
+    }
+    if (box6.innerText === box7.innerText && box7.innerText === box8.innerText ||
+        box8.innerText === box7.innerText && box7.innerText === box6.innerText){
+        if (box6.innerHTML === "X" || box6.innerHTML === "O"){
+            displayWinner()}
+    }
+    if (box0.innerText === box4.innerText && box4.innerText === box8.innerText ||
+        box8.innerText === box4.innerText && box4.innerText === box0.innerText){
+        if (box0.innerHTML === "X" || box0.innerHTML === "O"){
+            displayWinner()}
+    }
+    if (box0.innerHTML === box4.innerHTML && box4.innerHTML === box8.innerHTML &&
+        box6.innerText === box7.innerText && box7.innerText === box8.innerText &&
+        box2.innerText === box4.innerText && box4.innerText === box6.innerText &&
+        box3.innerText === box4.innerText && box4.innerText === box5.innerText &&
+        box0.innerText === box3.innerText && box3.innerText === box6.innerText &&
+        box2.innerText === box5.innerText && box5.innerText === box8.innerText &&
+        box1.innerText === box4.innerText && box4.innerText === box7.innerText &&
+        box0.innerHTML === box1.innerHTML && box1.innerHTML === box2.innerHTML){
+
+            if (box0.innerHTML === "X" || box0.innerHTML === "O" &&
+                box6.innerHTML === "X" || box6.innerHTML === "O" &&
+                box2.innerHTML === "X" || box2.innerHTML === "O" &&
+                box3.innerHTML === "X" || box3.innerHTML === "O" &&
+                box4.innerHTML === "X" || box4.innerHTML === "O" &&
+                box5.innerHTML === "X" || box5.innerHTML === "O" &&
+                box7.innerHTML === "X" || box7.innerHTML === "O" &&
+                box8.innerHTML === "X" || box8.innerHTML === "O" &&
+                box1.innerHTML === "X" || box1.innerHTML === "O"){
+                tieGame()}
+        }
+        
+}
+// checkWinner()
 const takeTurn = (event) => {
-    
+
     // 1. The current player's symbol should be filled in in that position IF that position isn't already taken.
     // the variable targetValue represents the element that was clicked on's value
     
     let positionDiv = event.target
+    console.log('this is the position div', positionDiv)
     let positionValue = positionDiv.innerText
-    let positionIsTaken = symbols.includes(positionValue)  // Googled: how to check if value is in an array and received assistance from friend/tutor
+    console.log('this is the position value', positionValue)
+    let positionIsTaken = symbols.includes(positionValue) // Googled: how to check if value is in an array and received assistance from friend/tutor
+    console.log('this is the position positionTaken', positionIsTaken)
     let gameOver = false;
-    
-    if (!positionIsTaken || !gameOver) {
+    if (!positionIsTaken && !gameOver) {
         positionDiv.innerText = currentPlayer
-        console.log(positionDiv.id)
+        checkWinner()
+        // console.log("what is this",positionDiv.id)
         // 2. A winner should be checked for AND declared if a winner exists
         // I have an array with the winning combinations
         // let winningCombinations = [[0, 1, 2], [1, 4, 7], [2, 5, 8], [0, 3, 6], [2, 4, 6], [3, 4, 5], [6, 7, 8], [0, 4, 8]]
         // if (currentPlayer == 'X') {
             // } 
-                if (box0.innerText == box1.innerText && box1.innerText == box2.innerText||
-                    box1.innerText == box4.innerText && box1.innerText == box7.innerText||
-                    box2.innerText == box5.innerText && box2.innerText == box8.innerText||
-                    box0.innerText == box3.innerText && box0.innerText == box6.innerText||
-                    box2.innerText == box4.innerText && box2.innerText == box6.innerText||
-                    box3.innerText == box4.innerText && box3.innerText == box5.innerText||
-                    box6.innerText == box7.innerText && box6.innerText == box8.innerText||
-                    box0.innerText == box4.innerText && box0.innerText == box2.innerTex){
-                
-            }   
-                    // displayWinner(currentPlayer)                 
-                }           
-                
-                // console.log(box8.innerText)
-                // 3. If there's no winner, the next player's turn should start
-                currentPlayer = currentPlayer === 'X' ? 'O': 'X'
-                displayCurrentPlayer()
-            }
-                
-                
+        // if (box0.innerText == box1.innerText){
+            //     console.log('this is hit')
+            // }
             
-            // takeTurn()
-        
-        displayWinner()
-        
-        for (let i = 0; i < boardPositions.length; i++ ) {
-        // Assign the boardPosition at the current index to it's own value
-            // i put boardPostion to equte to the index/divs
-            let boardPosition = boardPositions[i]
-            boardPosition.addEventListener('click', takeTurn)
+        } else if (positionIsTaken && !gameOver){
+            positionValue = currentPlayer
+            tieGame()
         }
         
-        
-        
-        // this should be able to clear my board and click when a player has a turn
-        const resetButton = document.querySelector('#reset')
-        
-        const resetBoard = () => {
-            for (let i = 0; i < boardPositions.length; i++ ) {
-                let boardPosition = boardPositions[i]
-                boardPosition.innerText = i
-                // displayWinner()
-            }
-            
-            currentPlayer = 'X'
-            displayCurrentPlayer()
-        }
-        
-        resetButton.addEventListener('click', resetBoard)
+        // console.log(box8.innerText)
+        // 3. If there's no winner, the next player's turn should start
+        currentPlayer = currentPlayer === 'X' ? 'O' : 'X'
+        displayCurrentPlayer()
+    }
+    
+
+
+for (let i = 0; i < boardPositions.length; i++) {
+    // Assign the boardPosition at the current index to it's own value
+    // i put boardPostion to equte to the index/divs
+    let boardPosition = boardPositions[i]
+    boardPosition.addEventListener('click', takeTurn)
+}
+
+
+
+// this should be able to clear my board and click when a player has a turn
+const resetButton = document.querySelector('#reset')
+
+const resetBoard = () => {
+    for (let i = 0; i < boardPositions.length; i++) {
+        let boardPosition = boardPositions[i]
+        boardPosition.innerText = ""
+    }
+    winnerMessage.innerText = ""
+    currentPlayer = 'X'
+    displayCurrentPlayer()
+    takeTurn()
+}
+
+resetButton.addEventListener('click', resetBoard)
